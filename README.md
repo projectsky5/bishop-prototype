@@ -20,16 +20,29 @@
 
 **Инструкция для запуска**
 
-1. Настройка проекта
-  1. Запустить Kafka: ```docker compose up -d```
-  2. Настроить application.yml
+- Если вы уже установили стартер в локальный репозиторий, то см.пункт 2
 
-Настройка application.yml:
-  1. Конфигурация Kafka через spring (spring.kafka.*)
-  2. Включение стартера (synthetic.human.core.enabled: true)
-  3. Конфигурация стартера:
-     1. command: max-pool-size, core-pool-size, queue-capacity, keep-alive-seconds, назначения описаны с помощью JavaDoc + configuration processor
-     2. audit: mode: (kafka/console), kafka.topic - указание топика Kafka
+1. Добавить в локальный m2 репозиторий стартер
+   1. Перейти в проект synthetic-human-core-starter
+   2. Находясь в директории стартера выполнить команду
+  
+```
+mvn clean install
+```
+
+2. Настройка проекта
+    1. Запустить Kafka: ```docker compose up -d```
+    2. Настроить application.yml
+
+3. Настройка application.yml:
+    1. Конфигурация Kafka через spring (spring.kafka.*)
+    2. Включение стартера (synthetic.human.core.enabled: true)
+    3. Конфигурация стартера:
+       1. command: max-pool-size, core-pool-size, queue-capacity, keep-alive-seconds, назначения описаны с помощью JavaDoc + configuration processor
+       2. audit: mode: (kafka/console), kafka.topic - указание топика Kafka
+
+<img width="256" height="325" alt="image" src="https://github.com/user-attachments/assets/4ac7e5c0-390a-4ad5-bc2d-c9a851c7a4b8" />
+
 
 ---
 
@@ -121,7 +134,4 @@
 }
 ```
 5. Вызвать GET localhost:8080/actuator/metrics/synthetic.command.queue.size
-
-
-
       
