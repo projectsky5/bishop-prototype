@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: bishop-prototype
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: audit-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+synthetic:
+  human:
+    core:
+      enabled: true
+      command:
+        max-pool-size: 1
+        core-pool-size: 1
+        queue-capacity: 1
+
+    audit:
+      mode: kafka
+      kafka:
+        topic: audit-topic
